@@ -1,9 +1,15 @@
 # KAgent on EKS
 
-Everything needed to install KAgent on an EKS cluster, back its OpenAI key
-with AWS Secrets Manager, and (optionally) expose the UI via ALB + TLS.
-Commands are in the order that actually worked, including fixes for the
-errors most people hit along the way.
+Kubernetes troubleshooting can quickly become complex as clusters grow and
+workloads scale. Kagent makes it easier to ask your cluster questions in plain
+English and get real answers.
+
+Kagent is an AI-powered Kubernetes assistant that can interact with your
+cluster, run commands, and support DevOps and SRE workflows. This guide walks
+through installing Kagent from scratch, configuring an AI model, enabling the
+built-in tools, and running your first Kubernetes query with natural language.
+
+By the end, you’ll have a working Kagent setup on your EKS cluster.
 
 ```
 kagent-eks-setup/
