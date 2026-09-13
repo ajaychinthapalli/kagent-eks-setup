@@ -1,0 +1,31 @@
+# NOTE: If Helm already created a default-model-config (some chart versions
+# ship one built-in), do NOT kubectl apply this on top of it - you'll hit a
+# field-manager ownership conflict. Instead patch the Helm-owned resource:
+#
+#   kubectl patch modelconfig default-model-config -n kagent --type merge -p '{
+#     "spec": {
+#       "apiKeySecret": "kagent-openai",
+#       "apiKeySecretKey": "OPENAI_API_KEY",
+#       "openAI": {"baseUrl": "https://api.openai.com/v1"}
+#     }
+#   }'
+#
+# Only kubectl apply this file if `kubectl get modelconfig -n kagent` is empty.
+
+apiVersion: kagent.dev/v1alpha2
+kind: ModelConfig
+metadata:
+  name: default-model-config
+  namespace: kagent
+  labels:
+    app.kubernetes.io/managed-by: Helm
+  annotations:
+    meta.helm.sh/release-name: kagent
+    meta.helm.sh/release-namespace: kagent
+spec:
+  apiKeySecret: "kagent-openai"
+  apiKeySecretKey: "OPENAI_API_KEY"
+  model: "openai/gpt-4.1-mini"
+  provider: OpenAI
+  openAI:
+    baseUrl: "https://api.openai.com/v1"   # or your proxy/base URL
