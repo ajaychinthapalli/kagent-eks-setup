@@ -117,7 +117,7 @@ Look for `Type: Ready, Status: True, Reason: DeploymentReady`.
 
 ## 5. Access the UI
 
-![kagent-ui](./kagent-ui.png)
+<img src="./kagent-ui.png" alt="Kagent UI" width="1200" />
 
 ```bash
 kubectl -n kagent port-forward service/kagent-ui 8080:8080
